@@ -555,9 +555,7 @@ wstring time2wstring(ULONGLONG millisecs)
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    if (uMsg == WM_QUIT)
-        PostQuitMessage(0);
-    else if (uMsg == WM_DESTROY)
+    if (uMsg == WM_DESTROY)
     {
         State_Info *pState = (State_Info *)GetWindowLongPtr(hWnd, GWLP_USERDATA);
         SafeRelease(&pFactory);
@@ -939,7 +937,8 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 State_Info *pState = (State_Info *)GetWindowLongPtr(hWnd, GWLP_USERDATA);
                 pState->running = pState->counting = 0;
                 pState->reviewing = 1;
-                SetWindowText(pState->hWndButtonStart, L"▷");
+                if (!pState->sent)
+                    SetWindowText(pState->hWndButtonStart, L"▷");
                 if (id == ID_Button_Backmost)
                     pState->display_size = 0;
                 else if (id == ID_Button_Back)

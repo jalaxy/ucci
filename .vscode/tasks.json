@@ -5,27 +5,27 @@
             "label": "C/C++: g++.exe 生成活动文件",
             "command": "C:\\MinGW64\\bin\\g++.exe",
             "args": [
-                "-g", // debug option
-                // "-s",
+                // "-g", // debug option
+                "-s",
                 "-m32",
                 //
                 "${workspaceFolder}\\gui.cpp",
                 "${workspaceFolder}\\chessboard.cpp",
                 // "${workspaceFolder}\\basic.cpp",
                 //
-                // "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\d2d1.lib",
-                // "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\dwrite.lib",
-                // "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\Ole32.lib",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\d2d1.lib",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\dwrite.lib",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\Ole32.lib",
+                "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\d2d1.lib",
+                "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\dwrite.lib",
+                "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\Ole32.lib",
+                // "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\d2d1.lib",
+                // "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\dwrite.lib",
+                // "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64\\Ole32.lib",
                 //
                 "-o",
                 "${workspaceFolder}\\winmain.exe",
                 "-municode",
                 "-mwindows",
                 "-static",
-                // "-O2",
+                "-O2",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
