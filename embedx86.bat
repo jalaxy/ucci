@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86\mt.exe" -manifest winmain.exe.manifest -outputresource:winmain.exe;1
