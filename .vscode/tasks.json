@@ -11,7 +11,7 @@
                 //
                 "${workspaceFolder}\\gui.cpp",
                 "${workspaceFolder}\\chessboard.cpp",
-                // "${workspaceFolder}\\basic.cpp",
+                "${workspaceFolder}\\pgn.cpp",
                 //
                 "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\d2d1.lib",
                 "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x86\\dwrite.lib",

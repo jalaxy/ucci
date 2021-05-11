@@ -553,6 +553,7 @@ wstring time2wstring(ULONGLONG millisecs)
     return s_time;
 }
 
+vector<string> read_pgn(string filename);
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     if (uMsg == WM_DESTROY)
@@ -784,7 +785,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 ofn.hwndOwner = hWnd;
                 ofn.lpstrFile = szFile;
                 ofn.nMaxFile = sizeof(szFile);
-                ofn.lpstrFilter = L"可执行文件(.exe)\0*.EXE\0";
+                ofn.lpstrFilter = L"可执行文件(.exe)\0*.EXE\0棋谱(.pgn)\0*.PGN\0";
                 ofn.nFilterIndex = 1;
                 ofn.lpstrFileTitle = NULL;
                 ofn.nMaxFileTitle = 0;
@@ -793,6 +794,21 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 WINBOOL suc = GetOpenFileName(&ofn);
                 if (suc == FALSE)
                     return DefWindowProc(hWnd, uMsg, wParam, lParam);
+
+                // open pgn
+                wcslwr(szFile);
+                wstring wstmp(szFile);
+                if (wstmp.find(L".pgn") != wstmp.npos)
+                {
+                    pState->over = 1;
+                    char filename[1024] = {0};
+                    WideCharToMultiByte(CP_ACP, 0, szFile, -1, filename, 1024, NULL, NULL);
+                    pState->moves = read_pgn(filename);
+                    pState->display_size = 1;
+                    SendMessage(hWnd, WM_COMMAND, ((UINT)BN_CLICKED << 16) + ID_Button_Back, (LPARAM)NULL);
+                    SetFocus(hWnd);
+                    return DefWindowProc(hWnd, uMsg, wParam, lParam);
+                }
 
                 // open engine
                 HANDLE hInRead, hInWrite;
